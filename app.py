@@ -1,5 +1,6 @@
 import flask
 from flask import Flask
+from flask import render_template
 
 app = Flask(__name__)
 FLASK_APP = __name__
@@ -7,7 +8,7 @@ FLASK_APP = __name__
 
 @app.route('/')
 def home():
-    return flask.render_template('homepage.html')
+    return render_template('homepage.html')
 
 
 @app.route('/game/<nickname>')
@@ -17,4 +18,4 @@ def game(nickname):
 
 @app.route('/leaderboard')
 def statistics():
-    return flask.render_template('leaderboard.html')
+    return render_template('leaderboard.html')
