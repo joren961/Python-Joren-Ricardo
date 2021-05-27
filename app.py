@@ -1,3 +1,4 @@
+import flask
 from flask import Flask
 
 app = Flask(__name__)
@@ -5,8 +6,8 @@ FLASK_APP = __name__
 
 
 @app.route('/')
-def hello():
-    return 'This is where the preferences are set'
+def home():
+    return flask.render_template('homepage.html')
 
 
 @app.route('/game/<nickname>')
@@ -14,6 +15,6 @@ def game(nickname):
     return 'This is where the game is played'
 
 
-@app.route('/')
+@app.route('/leaderboard')
 def statistics():
-    return 'This is where the statistics are displayed'
+    return flask.render_template('leaderboard.html')
