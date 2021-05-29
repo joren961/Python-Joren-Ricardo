@@ -13,16 +13,16 @@
 
 <form method="post" class="form-group" id="homeform">
   <label>Enter your nickname:</label>
-  <input class="form-control" type="text" placeholder="Nickname.." required>
+  <input class="form-control" type="text" placeholder="Nickname.." required name="nickname">
   <label>Double colors allowed?</label>
-  <select class="form-select">
+  <select class="form-select" name="double-colors">
     <option value="0" selected>No</option>
     <option value="1">Yes</option>
   </select>
   <label>How many colors can the code contain?</label>
-  <input class="form-control" type="number" min="6" max="10" placeholder="6" required value="6">
+  <input class="form-control" type="number" min="6" max="10" placeholder="6" required value="6" name="color-amount">
   <label>How many positions does the code have?</label>
-  <input class="form-control" type="number" min="4" max="10" placeholder="4" required value="4">
+  <input class="form-control" type="number" min="4" max="10" placeholder="4" required value="4" name="position-amount">
   <input type="submit" class="btn btn-success" value="play">
 </form>
 
