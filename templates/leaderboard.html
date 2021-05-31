@@ -1,4 +1,57 @@
 {% extends 'layout.html' %}
 {% block content %}
 
+<h2 class="statisticsTitle">Statistics</h2>
+<div class="accordion" id="accordionStatistics1">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne1">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
+          Henk
+        </button>
+      </h2>
+      <div id="collapseOne1" class="accordion-collapse collapse" aria-labelledby="headingOne1" data-bs-parent="#accordionStatistics1">
+        <div class="accordion-body">
+            <table>
+                <tr>
+                    <td class="pr-3">Played: 31/05/2021 15:20</td>
+                    <td class="pr-3">Guessed in: 6 turns</td>
+                    <td class="pr-3">Cheat on: No</td>
+                  </tr>
+            </table>
+        </div>
+      </div>
+      <div id="collapseOne1" class="accordion-collapse collapse" aria-labelledby="headingOne1" data-bs-parent="#accordionStatistics1">
+        <div class="accordion-body">
+            <table>
+                <tr>
+                    <td>Played: 31/05/2021 17:13</td>
+                    <td>Guessed in: 1 turns</td>
+                    <td>Cheat on: Yes</td>
+                  </tr>
+            </table>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="accordion" id="accordionStatistics2">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne2">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne2" aria-expanded="false" aria-controls="collapseOne2">
+          Sanne
+        </button>
+      </h2>
+      <div id="collapseOne2" class="accordion-collapse collapse" aria-labelledby="headingOne2" data-bs-parent="#accordionStatistics2">
+        <div class="accordion-body">
+            <table>
+                <tr>
+                    <td class="pr-3">Played: 31/05/2021 13:42</td>
+                    <td class="pr-3">Guessed in: 3 turns</td>
+                    <td class="pr-3">Cheat on: Yes</td>
+                  </tr>
+            </table>
+        </div>
+      </div>
+    </div>
+</div>
 {% endblock %}
