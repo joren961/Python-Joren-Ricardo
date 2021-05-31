@@ -15,17 +15,17 @@ def home():
     return render_template('homepage.html')
 
 
-@app.route('/game', methods=['GET'])
+@app.route('/game', methods=['GET', 'POST'])
 def game():
     nickname = request.form.get("nickname")
     double_colors = request.form.get("double-colors")
-    color_amount = request.form.get("color-amount")
-    position_amount = request.form.get("position-amount")
+    color_amount = request.form.get("color-amount", type=int)
+    position_amount = request.form.get("position-amount", type=int)
     cheat = request.form.get('cheat')
     game_model = Game(Player(nickname), double_colors, color_amount, position_amount, cheat)
     return render_template('game.html',
                            nickname=nickname,
-                           game=game_model)
+                           position_amount=position_amount)
 
 
 @app.route('/leaderboard')

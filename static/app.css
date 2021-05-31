@@ -1,7 +1,50 @@
-@import "statistics.css";
 
 body {
     font-family: 'Nunito', sans-serif;
+}
+
+.board {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+.guesses {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkGuesses {
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.block-row {
+    display:flex;
+    flex-direction: row;
+    margin-top:10px;
+    border:1px solid white;
+}
+
+.pin-row {
+    display:flex;
+    flex-direction: row;
+    margin-top:5px;
+    margin-right:1px;
+}
+
+.block {
+    background-color:black;
+    padding:15px;
+    margin-left: 2px;
+}
+
+.pin {
+    border:2px solid black;
+    padding:8px;
 }
 
 .formDiv {

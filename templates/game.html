@@ -1,16 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'layout.html' %}
+{% block content %}
 
-<div class="board">
-    <div class="guesses">
+    <div class="board">
+        <div class="guesses">
+            {% for i in range(10) %}
+                <div class="block-row">
+                    {{ loop.index }}
+                    {% for j in range(position_amount) %}
+                        <div class="block" id="block-{{ j }}">block</div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="checkGuesses">
+        {% set count = {'value': 0} %}
+            {% for i in range(10) %}
+                <div class="pin-row">
+                    {% for j in range(position_amount) %}
+                        <div class="pin" id="pin-{{ j }}">pin</div>
+                    {% endfor %}
+                    {{ loop.index }}</div>
+            {% endfor %}
+        </div>
     </div>
-    <div class="checkGuesses">
-    </div>
-</div>
-</body>
-</html>
+
+{% endblock %}

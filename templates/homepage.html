@@ -3,7 +3,7 @@
 
     <div class="formDiv">
         <h2>Mastermind Online</h2>
-        <form method="post" class="form-group" id="homeform">
+        <form method="post" class="form-group" id="homeform" action="{{ url_for('game') }}">
             <label>Enter your nickname:</label>
             <input class="form-control mb-2" type="text" placeholder="Nickname.." required name="nickname">
             <label>Double colors allowed?</label>

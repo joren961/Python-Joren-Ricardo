@@ -2,15 +2,16 @@ from models.Block import Block
 from models.PinRow import PinRow
 import random
 
+
 class BlockRow:
     def __init__(self, row_number):
-         self.block_row = []
-         for _ in range(4):
-             self.block_row.append(Block())
-         
-         self.row_number = row_number
-         self.pin_row = PinRow()
-     
+        self.block_row = []
+        # for _ in range(4):
+        #     self.block_row.append(Block())
+
+        self.row_number = row_number
+        self.pin_row = PinRow()
+
     # getter method
     def get_block_row(self):
         return self.block_row
