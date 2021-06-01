@@ -25,7 +25,8 @@ def game():
     game_model = Game(Player(nickname), double_colors, color_amount, position_amount, cheat)
     return render_template('game.html',
                            nickname=nickname,
-                           position_amount=position_amount)
+                           position_amount=position_amount,
+                           color_amount=color_amount)
 
 
 @app.route('/leaderboard')

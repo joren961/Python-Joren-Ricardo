@@ -5,15 +5,15 @@
         <div class="guesses">
             {% for i in range(10) %}
                 <div class="block-row">
-                    {{ loop.index }}
                     {% for j in range(position_amount) %}
                         <div class="block" id="block-{{ j }}">block</div>
                     {% endfor %}
+                {{ loop.index }}
                 </div>
             {% endfor %}
         </div>
+
         <div class="checkGuesses">
-        {% set count = {'value': 0} %}
             {% for i in range(10) %}
                 <div class="pin-row">
                     {% for j in range(position_amount) %}
@@ -24,4 +24,13 @@
         </div>
     </div>
 
+    <form method="post" class="form-group" id="guessForm">
+    <label id="guessLabel">Take your guess per column:</label>
+        {% for i in range(position_amount) %}
+            <p>{{ loop.index }}</p>
+            <input type="number" min="1" max="{{color_amount}}" required class="form-control" id="numberInput" placeholder="1">
+        {% endfor %}
+    <input type="submit" value="Confirm" class="btn btn-success">
+    </form>
 {% endblock %}
+
