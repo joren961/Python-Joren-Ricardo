@@ -3,6 +3,11 @@ body {
     font-family: 'Nunito', sans-serif;
 }
 
+nav * {
+    font-size: 20px;
+    color:rgb(255, 255, 255);
+}
+
 .board {
     display: flex;
     flex-direction: row;
@@ -16,10 +21,22 @@ body {
     flex-direction: column-reverse;
 }
 
+.column-numbers {
+    display:flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin-left:22px;
+}
+
+.column-numbers > p {
+    width:75px;
+    margin-left: 2.5%;
+}
+
 .checkGuesses {
-    margin-left: 50px;
     display: flex;
     flex-direction: column-reverse;
+    margin-left:100px;
 }
 
 .block-row {
@@ -41,7 +58,9 @@ body {
 .block {
     background-color:black;
     padding:15px;
-    margin-left: 2px;
+    width: 75px;
+    margin-right: 5px;
+    border-radius: 120%;
 }
 
 .pin {
@@ -67,25 +86,19 @@ body {
     width:60px;
 }
 
-.formDiv {
+.homeDiv {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     margin-top: 80px;
-    width: 93%;
 }
 
-.formDiv.input {
-    margin:5px;
-}
-
-.formDiv h2 {
-    width:300px;
-}
-
-.footer-copyright{
-    width:93%;
+#homeform {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .accordion{

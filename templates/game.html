@@ -3,12 +3,17 @@
 
     <div class="board">
         <div class="guesses">
+            <div class="column-numbers">
+                {% for foo in range(position_amount) %}
+                    <p>{{ loop.index }}</p>
+                {% endfor %}
+            </div>
             {% for i in range(10) %}
                 <div class="block-row">
                     {% for j in range(position_amount) %}
                         <div class="block" id="block-{{ j }}">block</div>
                     {% endfor %}
-                {{ loop.index }}
+                    {{ loop.index }}
                 </div>
             {% endfor %}
         </div>
@@ -25,12 +30,13 @@
     </div>
 
     <form method="post" class="form-group" id="guessForm">
-    <label id="guessLabel">Take your guess per column:</label>
+        <label id="guessLabel">Take your guess per column:</label>
         {% for i in range(position_amount) %}
             <p>{{ loop.index }}</p>
-            <input type="number" min="1" max="{{color_amount}}" required class="form-control" id="numberInput" placeholder="1">
+            <input type="number" min="1" max="{{ color_amount }}" required class="form-control" id="numberInput"
+                   placeholder="1">
         {% endfor %}
-    <input type="submit" value="Confirm" class="btn btn-success">
+        <input type="submit" value="Confirm" class="btn btn-success">
     </form>
 {% endblock %}
 

@@ -1,33 +1,31 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-    <div class="formDiv">
-        <h2>Mastermind Online</h2>
+    <div class="homeDiv">
         <form method="post" class="form-group" id="homeform" action="{{ url_for('game') }}">
             <label>Enter your nickname:</label>
             <input class="form-control mb-2" type="text" placeholder="Nickname.." required name="nickname">
-            <label>Double colors allowed?</label>
+            <label>Double colors</label>
             <select class="form-select mb-2" name="double-colors">
-                <option value="0" selected>No</option>
-                <option value="1">Yes</option>
+                <option value="0" selected>Disabled</option>
+                <option value="1">Enabled</option>
             </select>
-            <label>How many colors can the code contain?</label>
+            <label>Amount of colors in the code</label>
             <input class="form-control mb-2" type="number" min="6" max="10" placeholder="6" required value="6"
                    name="color-amount">
-            <label>How many positions does the code have?</label>
+            <label>Amount of positions to guess</label>
             <input class="form-control mb-2" type="number" min="4" max="10" placeholder="4" required value="4"
                    name="position-amount">
-            <label>Cheat mode on?</label>
+            <label>Cheat mode</label>
             <select class="form-select mb-3" name="cheat">
-                <option value="0" selected>No</option>
-                <option value="1">Yes</option>
+                <option value="0" selected>Disabled</option>
+                <option value="1">Enabled</option>
             </select>
             <input type="submit" class="btn btn-success" value="play">
         </form>
-    </div>
-
     <footer class="page-footer font-small pt-4">
         <h5 class="footer-copyright text-center py-3">Created by Ricardo Buitenhuis & Joren Fonteijn</h5>
     </footer>
+    </div>
 
 {% endblock %}
