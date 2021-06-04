@@ -1,13 +1,37 @@
 import development as development
+import sqlite3 as sql
+from sqlite3 import Error
 from flask import Flask, request
 from flask import render_template
 
 from models.Game import Game
 from models.Player import Player
 
+
+def create_connection(db_file):
+    conn = None
+    try:
+        conn = sql.connect(db_file)
+        conn.execute(create_database())
+    except Error as e:
+        print(e)
+    finally:
+        if conn:
+            conn.close()
+
+def create_database():
+    return """ CREATE TABLE IF NOT EXISTS stats (
+                                        nickname text PRIMARY KEY,
+                                        cheat integer NOT NULL,
+                                        play_date text NOT NULL,
+                                        guesses integer NOT NULL
+                                    ); """
+
+
 app = Flask(__name__, template_folder='templates')
 FLASK_APP = __name__
 FLASK_ENV = development
+create_connection(r"C:\sqlite\db\mastermind.db")
 
 
 @app.route('/')
