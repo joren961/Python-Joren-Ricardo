@@ -5,14 +5,14 @@
         <form method="post" class="form-group" id="homeform" action="{{ url_for('game') }}">
             <label>Enter your nickname:</label>
             <input class="form-control mb-2" type="text" placeholder="Nickname.." required name="nickname">
-            <label>Double colors</label>
-            <select class="form-select mb-2" name="double-colors">
+            <label>Double numbers</label>
+            <select class="form-select mb-2" name="double-numbers">
                 <option value="0" selected>Disabled</option>
                 <option value="1">Enabled</option>
             </select>
-            <label>Amount of colors in the code</label>
+            <label>Amount of numbers in the code</label>
             <input class="form-control mb-2" type="number" min="6" max="10" placeholder="6" required value="6"
-                   name="color-amount">
+                   name="number-amount">
             <label>Amount of positions to guess</label>
             <input class="form-control mb-2" type="number" min="4" max="10" placeholder="4" required value="4"
                    name="position-amount">

@@ -19,12 +19,12 @@ def game():
     if request.form.get("turn") == None:
 
         nickname = request.form.get("nickname")
-        double_colors = request.form.get("double-colors")
-        number_amount = request.form.get("color-amount", type=int)
+        double_number = request.form.get("double-numbers")
+        number_amount = request.form.get("number-amount", type=int)
         position_amount = request.form.get("position-amount", type=int)
         cheat = request.form.get('cheat')
 
-        game_controller.create_game(nickname, double_colors, number_amount, position_amount, cheat)
+        game_controller.create_game(nickname, double_number, number_amount, position_amount, cheat)
 
     elif request.form.get("numberInput1") is not None:
         input_list = []
