@@ -1,3 +1,4 @@
+from re import S
 from models.Block import Block
 from models.PinRow import PinRow
 import random
@@ -30,8 +31,13 @@ class BlockRow:
 
         return code_string
 
-    def randomize_block_row(self, number_amount):
-        for block in self.block_row:
-            block.set_value(random.randint(1, number_amount))
-        
+    def randomize_block_row(self, number_amount, double_number):
+        if int(double_number) == 1:
+            for block in self.block_row:
+                block.set_value(random.randint(1, number_amount))
+        else:
+            random_list = random.sample(range(1, number_amount + 1), len(self.block_row))
+            for i in range(len(self.block_row)):
+                self.block_row[i].set_value(random_list[i])
+                
         return self

@@ -21,7 +21,7 @@ class Game:
 
     def randomize_code(self):
         random_block_row = BlockRow(0, self.position_amount)
-        random_block_row = random_block_row.randomize_block_row(self.number_amount)
+        random_block_row = random_block_row.randomize_block_row(self.number_amount, self.double_number)
         return random_block_row
 
     # getter method
