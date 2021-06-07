@@ -69,7 +69,7 @@ class GameController:
             self.won_game()
 
     def won_game(self):
-        print("You won")
+        print("Hij komt in deze functie bij win maar het doet nog niks")
 
     def game_over(self):
-        print("You lost")
+        print("Hij komt in deze functie bij lose maar het doet nog niks")
