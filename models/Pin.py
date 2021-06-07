@@ -1,15 +1,11 @@
-from enum import Enum
-
-enum_color = Enum('Color', 'None White Black')
-
 class Pin:
-    # def __init__(self, color = enum_color.None):
-    #      self.set_color(self, color)
+    def __init__(self):
+         self.value = ""
 
     # getter method
-    def get_color(self):
-        return self.color
+    def get_value(self):
+        return self.value
       
     # setter method
-    def set_color(self, color):
-        self.color = color
+    def set_value(self, value):
+        self.value = value

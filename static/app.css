@@ -13,6 +13,9 @@ nav * {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+.nickname{
     margin-top: 80px;
 }
 
@@ -24,25 +27,26 @@ nav * {
 .column-numbers {
     display:flex;
     flex-direction: row;
-    align-items: baseline;
-    margin-left:22px;
+    align-items: center;
+    margin-top: 5px;
 }
 
-.column-numbers > p {
-    width:75px;
-    margin-left: 2.5%;
+.column-number {
+    width: 75px;
+    margin-right: 5px;
 }
 
 .checkGuesses {
     display: flex;
     flex-direction: column-reverse;
     margin-left:100px;
+    margin-bottom:8px;
+    margin-top:10px;
 }
 
 .block-row {
     display:flex;
     flex-direction: row;
-    align-items: baseline;
     margin-top:10px;
     border:1px solid white;
 }
@@ -50,22 +54,28 @@ nav * {
 .pin-row {
     display:flex;
     flex-direction: row;
-    align-items: baseline;
-    margin-top:5px;
+    margin-bottom:24px;
     margin-right:1px;
+    height: 42px;
 }
 
 .block {
     background-color:black;
     padding:15px;
     width: 75px;
+    height: 54px;
     margin-right: 5px;
     border-radius: 120%;
+    text-align: center;
+    color:rgb(255, 255, 255);
 }
 
 .pin {
     border:2px solid black;
     padding:8px;
+    margin-right:5px;
+    height:42px;
+    width:44px;
 }
 
 #guessForm {
@@ -84,14 +94,6 @@ nav * {
     margin-right: 40px;
     margin-left: 10px;
     width:60px;
-}
-
-.homeDiv {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 80px;
 }
 
 #homeform {
@@ -118,4 +120,29 @@ nav * {
     flex-direction: column;
     margin-top: 80px;
     width: 93%;
+}
+
+.homeDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 80px;
+    width: 96%;
+}
+
+.homeDiv.input {
+    margin:5px;
+}
+
+.homeDiv h2 {
+    width:300px;
+}
+
+.nav-link{
+    color: rgb(255, 255, 255);
+}
+
+.nav-link:hover{
+    color: rgb(255, 174, 0);
 }

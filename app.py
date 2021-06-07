@@ -1,12 +1,10 @@
-import development as development
+#import development as development
 import sqlite3 as sql
 from sqlite3 import Error
 from flask import Flask, request
 from flask import render_template
 
-from models.Game import Game
-from models.Player import Player
-
+from controllers.GameController import GameController
 
 def create_connection(db_file):
     conn = None
@@ -30,7 +28,7 @@ def create_database():
 
 app = Flask(__name__, template_folder='templates')
 FLASK_APP = __name__
-FLASK_ENV = development
+#FLASK_ENV = development
 create_connection(r"C:\sqlite\db\mastermind.db")
 
 
@@ -38,20 +36,35 @@ create_connection(r"C:\sqlite\db\mastermind.db")
 def home():
     return render_template('homepage.html')
 
+game_controller = GameController()
 
 @app.route('/game', methods=['GET', 'POST'])
 def game():
-    nickname = request.form.get("nickname")
-    double_colors = request.form.get("double-colors")
-    color_amount = request.form.get("color-amount", type=int)
-    position_amount = request.form.get("position-amount", type=int)
-    cheat = request.form.get('cheat')
-    game_model = Game(Player(nickname), double_colors, color_amount, position_amount, cheat)
-    return render_template('game.html',
-                           nickname=nickname,
-                           position_amount=position_amount,
-                           color_amount=color_amount)
 
+    if request.form.get("turn") == None:
+
+        nickname = request.form.get("nickname")
+        double_colors = request.form.get("double-colors")
+        number_amount = request.form.get("color-amount", type=int)
+        position_amount = request.form.get("position-amount", type=int)
+        cheat = request.form.get('cheat')
+    
+        game_controller.create_game(nickname, double_colors, number_amount, position_amount, cheat)
+
+    elif request.form.get("numberInput1") is not None:
+        input_list = []
+        for i in range(game_controller.get_game().get_position_amount()):
+            input_list.append(request.form.get("numberInput" + str(i+1)))
+        
+        game_controller.next_turn(game_controller.get_game().get_turn(), input_list) 
+
+    return render_template('game.html',
+        nickname=game_controller.get_game().get_player().get_nickname(),
+        position_amount=game_controller.get_game().get_position_amount(),
+        number_amount=game_controller.get_game().get_number_amount(),
+        cheat = game_controller.get_game().get_cheat(),
+        block_row_list = list(game_controller.get_game().get_block_row_list()),
+        computer_code = game_controller.get_game().get_computer_code().get_string_code(game_controller.get_game().get_computer_code()))
 
 @app.route('/leaderboard')
 def statistics():

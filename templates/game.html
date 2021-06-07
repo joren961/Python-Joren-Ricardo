@@ -1,42 +1,58 @@
 {% extends 'layout.html' %}
 {% block content %}
+    <div class="text-center nickname">
+        <h4>Player: {{ nickname }} <h4>
+    </div>
 
     <div class="board">
         <div class="guesses">
             <div class="column-numbers">
                 {% for foo in range(position_amount) %}
-                    <p>{{ loop.index }}</p>
+                    <div class="column-number text-center">{{ loop.index }}</div>
                 {% endfor %}
             </div>
-            {% for i in range(10) %}
+            {% for block_row in block_row_list %}
                 <div class="block-row">
-                    {% for j in range(position_amount) %}
-                        <div class="block" id="block-{{ j }}">block</div>
+                    {% for block in block_row.get_block_row() %}
+                        <div class="block" id="block-{{ block.get_number() }}">{{block.get_value()}}</div>
                     {% endfor %}
-                    {{ loop.index }}
+                    <div class="justify-content-center align-self-center ml-5">{{ loop.index }}</div>
                 </div>
             {% endfor %}
         </div>
 
         <div class="checkGuesses">
-            {% for i in range(10) %}
+            {% for block_row in block_row_list %}
                 <div class="pin-row">
-                    {% for j in range(position_amount) %}
-                        <div class="pin" id="pin-{{ j }}">pin</div>
+                    {% for pin in block_row.get_pin_row().get_pins() %}
+                        {% if pin.get_value() == 1 %}
+                            <div class="pin bg-dark" id="pin-{{ loop.index }}"></div>
+                        {% elif pin.get_value() == 2 %}
+                            <div class="pin bg-white" id="pin-{{ loop.index }}"></div>
+                        {% else %}
+                            <div class="pin bg-secondary bg-gradient" id="pin-{{ loop.index }}"></div>
+                        {% endif %}
                     {% endfor %}
-                    {{ loop.index }}</div>
+                    <div class="justify-content-center align-self-center ml-5">{{ loop.index }}</div>
+                </div>
             {% endfor %}
         </div>
     </div>
 
-    <form method="post" class="form-group" id="guessForm">
+    <form method="post" class="form-group" id="guessForm" action="{{ url_for('game') }}">
         <label id="guessLabel">Take your guess per column:</label>
         {% for i in range(position_amount) %}
             <p>{{ loop.index }}</p>
-            <input type="number" min="1" max="{{ color_amount }}" required class="form-control" id="numberInput"
-                   placeholder="1">
+            <input type="number" min="1" max="{{ number_amount }}" required class="form-control" id="numberInput" name="numberInput{{loop.index}}">
         {% endfor %}
+        <input type="hidden" name="turn" value="{{ turn }}">
         <input type="submit" value="Confirm" class="btn btn-success">
     </form>
+
+    {% if cheat == 1 %}
+    <div class="text-center">
+        <p>Computer Code: {{ computer_code }} </p>
+    </div>
+    {% endif %}
 {% endblock %}
 
