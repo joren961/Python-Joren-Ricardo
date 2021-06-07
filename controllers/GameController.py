@@ -17,7 +17,7 @@ class GameController:
         self.check_if_won(turn, input_list)
 
         if(turn == 10):
-            self.game_over()
+            self.game_end(False)
 
         turn += 1
         self.game.set_turn(turn)
@@ -66,10 +66,10 @@ class GameController:
                 count += 1
         
         if(count == len(input_list)):
-            self.won_game()
+            self.game_end(True)
 
-    def won_game(self):
-        print("Hij komt in deze functie bij win maar het doet nog niks")
-
-    def game_over(self):
-        print("Hij komt in deze functie bij lose maar het doet nog niks")
+    def game_end(self, won):
+        if won:
+            print("You win")
+        elif not won:
+            print("You lose")
