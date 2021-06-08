@@ -25,6 +25,12 @@ def game():
         position_amount = request.form.get("position-amount", type=int)
         cheat = request.form.get('cheat')
 
+        if double_number == '0':
+            if position_amount > number_amount:
+                error = "You cannot have more positions than numbers without double numbers"
+                return render_template('homepage.html', error=error)
+            else:
+                game_controller.create_game(nickname, double_number, number_amount, position_amount, cheat)
         game_controller.create_game(nickname, double_number, number_amount, position_amount, cheat)
 
         return render_template('game.html',

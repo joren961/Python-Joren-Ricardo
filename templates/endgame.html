@@ -2,14 +2,14 @@
 {% block content %}
     <div class="result">
         {% if won == 1 %}
-            <h1 id="win_title" class="alert alert-success">You won!</h1>
+            <p class="endtitle">Congratulations! You won!</p>
+            <h2 class="endtitle">Check results at the leaderboard!</h2>
         {% else %}
-            <h2 id="lost_title" class="alert alert-danger">You lost..</h2>
+            <p class="endtitle">You lost..</p>
         {% endif %}
-
-    <form action="{{ url_for('home') }}">
-        <input type="submit" value="Back to home">
-    </form>
     </div>
+    <form action="{{ url_for('home') }}" id="back-to-home">
+        <input type="submit" value="Back to home" class="btn btn-primary">
+    </form>
 
 {% endblock %}

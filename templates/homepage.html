@@ -2,6 +2,9 @@
 {% block content %}
 
     <div class="homeDiv">
+        {% if error %}
+            <p class="alert alert-danger">{{ error }}</p>
+        {% endif %}
         <form method="post" class="form-group" id="homeform" action="{{ url_for('game') }}">
             <label>Enter your nickname:</label>
             <input class="form-control mb-2" type="text" placeholder="Nickname.." required name="nickname">
@@ -23,9 +26,9 @@
             </select>
             <input type="submit" class="btn btn-success" value="play">
         </form>
-    <footer class="page-footer font-small pt-4">
-        <h5 class="footer-copyright text-center py-3">Created by Ricardo Buitenhuis & Joren Fonteijn</h5>
-    </footer>
+        <footer class="page-footer font-small pt-4">
+            <h5 class="footer-copyright text-center py-3">Created by Ricardo Buitenhuis & Joren Fonteijn</h5>
+        </footer>
     </div>
 
 {% endblock %}
