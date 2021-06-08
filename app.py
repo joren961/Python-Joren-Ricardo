@@ -27,6 +27,15 @@ def game():
 
         game_controller.create_game(nickname, double_number, number_amount, position_amount, cheat)
 
+        return render_template('game.html',
+            nickname=game_controller.get_game().get_player().get_nickname(),
+            position_amount=game_controller.get_game().get_position_amount(),
+            number_amount=game_controller.get_game().get_number_amount(),
+            cheat=game_controller.get_game().get_cheat(),
+            block_row_list=list(game_controller.get_game().get_block_row_list()),
+            computer_code=game_controller.get_game().get_computer_code().get_string_code(
+            game_controller.get_game().get_computer_code()))
+
     elif request.form.get("numberInput1") is not None:
         input_list = []
         for i in range(game_controller.get_game().get_position_amount()):
@@ -38,25 +47,19 @@ def game():
         game_controller.next_turn(game_controller.get_game().get_turn(), input_list)
         status = game_controller.checkStatus()
         if status == 1 or status == -1:
-            endgame(status, nickname, turn, cheat)
+            if status == 1:
+                db.storeGame(nickname, turn, cheat)
+
+            return render_template('endgame.html', won=status)
         else:
             return render_template('game.html',
-                                   nickname=game_controller.get_game().get_player().get_nickname(),
-                                   position_amount=game_controller.get_game().get_position_amount(),
-                                   number_amount=game_controller.get_game().get_number_amount(),
-                                   cheat=game_controller.get_game().get_cheat(),
-                                   block_row_list=list(game_controller.get_game().get_block_row_list()),
-                                   computer_code=game_controller.get_game().get_computer_code().get_string_code(
-                                       game_controller.get_game().get_computer_code()))
-
-
-@app.route('/game/finished')
-def endgame(status, nickname, guesses, cheat):
-    if status == 1:
-        db.storeGame(nickname, guesses, cheat)
-
-    return render_template('endgame.html', won=status)
-
+                nickname=game_controller.get_game().get_player().get_nickname(),
+                position_amount=game_controller.get_game().get_position_amount(),
+                number_amount=game_controller.get_game().get_number_amount(),
+                cheat=game_controller.get_game().get_cheat(),
+                block_row_list=list(game_controller.get_game().get_block_row_list()),
+                computer_code=game_controller.get_game().get_computer_code().get_string_code(
+                game_controller.get_game().get_computer_code()))
 
 @app.route('/leaderboard')
 def statistics():
