@@ -9,6 +9,7 @@ FLASK_APP = __name__
 game_controller = GameController()
 db = db(r"mastermind.db")
 
+
 @app.route('/')
 def home():
     return render_template('homepage.html')
@@ -16,7 +17,7 @@ def home():
 
 @app.route('/game', methods=['GET', 'POST'])
 def game():
-    if request.form.get("turn") == None:
+    if request.form.get("turn") is None:
 
         nickname = request.form.get("nickname")
         double_number = request.form.get("double-numbers")
@@ -31,16 +32,30 @@ def game():
         for i in range(game_controller.get_game().get_position_amount()):
             input_list.append(request.form.get("numberInput" + str(i + 1)))
 
+        turn = game_controller.get_game().get_turn()
+        nickname = game_controller.get_game().get_player().get_nickname()
+        cheat = game_controller.get_game().get_cheat()
         game_controller.next_turn(game_controller.get_game().get_turn(), input_list)
+        status = game_controller.checkStatus()
+        if status == 1 or status == -1:
+            endgame(status, nickname, turn, cheat)
+        else:
+            return render_template('game.html',
+                                   nickname=game_controller.get_game().get_player().get_nickname(),
+                                   position_amount=game_controller.get_game().get_position_amount(),
+                                   number_amount=game_controller.get_game().get_number_amount(),
+                                   cheat=game_controller.get_game().get_cheat(),
+                                   block_row_list=list(game_controller.get_game().get_block_row_list()),
+                                   computer_code=game_controller.get_game().get_computer_code().get_string_code(
+                                       game_controller.get_game().get_computer_code()))
 
-    return render_template('game.html',
-                           nickname=game_controller.get_game().get_player().get_nickname(),
-                           position_amount=game_controller.get_game().get_position_amount(),
-                           number_amount=game_controller.get_game().get_number_amount(),
-                           cheat=game_controller.get_game().get_cheat(),
-                           block_row_list=list(game_controller.get_game().get_block_row_list()),
-                           computer_code=game_controller.get_game().get_computer_code().get_string_code(
-                               game_controller.get_game().get_computer_code()))
+
+@app.route('/game/finished')
+def endgame(status, nickname, guesses, cheat):
+    if status == 1:
+        db.storeGame(nickname, guesses, cheat)
+
+    return render_template('endgame.html', won=status)
 
 
 @app.route('/leaderboard')
