@@ -52,11 +52,13 @@ class GameController:
             for j in range(len(self.game.get_computer_code().get_block_row())):
                 if not self.game.get_computer_code().get_block_row()[j].get_is_used():
                     if block_row_list[turn - 1].get_block_row()[i].get_value() == \
-                            self.game.get_computer_code().get_block_row()[j].get_value():
+                            self.game.get_computer_code().get_block_row()[j].get_value() and \
+                                block_row_list[turn - 1].get_block_row()[i].get_is_used() == False:
                         for k in range(len(block_row_list[turn - 1].get_pin_row().get_pins())):
                             if block_row_list[turn - 1].get_pin_row().get_pins()[k].get_value() == "":
                                 block_row_list[turn - 1].get_pin_row().get_pins()[k].set_value(2)
                                 self.game.get_computer_code().get_block_row()[j].set_is_used(True)
+                                block_row_list[turn - 1].get_block_row()[i].set_is_used(True)
                                 break
 
         self.game.set_block_row_list(block_row_list)
