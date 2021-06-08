@@ -146,3 +146,10 @@ nav * {
 .nav-link:hover{
     color: rgb(255, 174, 0);
 }
+
+.result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

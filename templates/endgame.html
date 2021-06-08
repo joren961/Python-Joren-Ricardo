@@ -2,9 +2,9 @@
 {% block content %}
     <div class="result">
         {% if won == 1 %}
-            <h1 id="win_title">You won!</h1>
+            <h1 id="win_title" class="alert alert-success">You won!</h1>
         {% else %}
-            <h2 id="lost_title">You lost..</h2>
+            <h2 id="lost_title" class="alert alert-danger">You lost..</h2>
         {% endif %}
 
     <form action="{{ url_for('home') }}">
