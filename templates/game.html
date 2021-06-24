@@ -14,7 +14,7 @@
             {% for block_row in block_row_list %}
                 <div class="block-row">
                     {% for block in block_row.get_block_row() %}
-                        <div class="block" id="block-{{ block.get_number() }}">{{block.get_value()}}</div>
+                        <div class="block" id="block-{{ block.get_number() }}">{{ block.get_value() }}</div>
                     {% endfor %}
                     <div class="justify-content-center align-self-center ml-5">{{ loop.index }}</div>
                 </div>
@@ -43,16 +43,17 @@
         <label id="guessLabel">Take your guess per column:</label>
         {% for i in range(position_amount) %}
             <p>{{ loop.index }}</p>
-            <input type="number" min="1" max="{{ number_amount }}" required class="form-control" id="numberInput" name="numberInput{{loop.index}}">
+            <input type="number" min="1" max="{{ number_amount }}" required class="form-control" id="numberInput"
+                   name="numberInput{{ loop.index }}">
         {% endfor %}
         <input type="hidden" name="turn" value="{{ turn }}">
         <input type="submit" value="Confirm" class="btn btn-success">
     </form>
 
     {% if cheat == 1 %}
-    <div class="text-center">
-        <p>Computer Code: {{ computer_code }} </p>
-    </div>
+        <div class="text-center">
+            <p>Computer Code: {{ computer_code }} </p>
+        </div>
     {% endif %}
 {% endblock %}
 

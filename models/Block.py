@@ -19,7 +19,7 @@ class Block:
     # getter method
     def get_is_used(self):
         return self.is_used
-      
+
     # setter method
     def set_is_used(self, value):
         self.is_used = value

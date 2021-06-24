@@ -1,12 +1,12 @@
 class Pin:
     def __init__(self):
-         self.value = ""
-         self.is_pinned = False
+        self.value = ""
+        self.is_pinned = False
 
     # getter method
     def get_value(self):
         return self.value
-      
+
     # setter method
     def set_value(self, value):
         self.value = value

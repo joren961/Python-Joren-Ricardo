@@ -39,5 +39,5 @@ class BlockRow:
             random_list = random.sample(range(1, number_amount + 1), len(self.block_row))
             for i in range(len(self.block_row)):
                 self.block_row[i].set_value(random_list[i])
-                
+
         return self

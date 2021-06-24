@@ -13,7 +13,7 @@ class Game:
         self.number_amount = number_amount
         self.position_amount = position_amount
         self.block_row_list = []
-        
+
         for i in range(10):
             self.block_row_list.append(BlockRow(i, position_amount))
 
@@ -27,7 +27,7 @@ class Game:
     # getter method
     def get_player(self):
         return self.player
-      
+
     # getter method
     def get_cheat(self):
         return self.cheat
@@ -59,9 +59,7 @@ class Game:
     # getter method
     def get_turn(self):
         return self.turn
-    
+
     # setter method
     def set_turn(self, value):
         self.turn = value
-
-
